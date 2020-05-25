@@ -14,6 +14,6 @@
 #	mvn org.pitest:pitest-maven:mutationCoverage
 #fi
 
-mvn clean surefire-report:report 
+mvn surefire-report:report 
 mvn org.pitest:pitest-maven:mutationCoverage
 java -Xmx256m -jar target/spring-boot-in-docker.jar
