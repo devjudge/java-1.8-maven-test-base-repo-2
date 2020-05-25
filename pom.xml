@@ -167,6 +167,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-boot-in-docker</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
