@@ -12,10 +12,6 @@ RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/ba
 RUN chmod 775 ./pre-build-2.sh
 RUN sh pre-build-2.sh
 
-RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh
-RUN chmod 775 ./db-setup.sh
-RUN sh db-setup.sh
-
 # Install Workspace for Java
 
 RUN if [ $workspace = "theia" ] ; then \
