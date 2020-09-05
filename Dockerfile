@@ -21,14 +21,14 @@ RUN if [ $workspace = "theia" ] ; then \
 WORKDIR /var/
 
 RUN if [ $workspace = "theia" ] ; then \
-	wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia/build.sh \
-    && chmod 775 ./build.sh && sh build.sh ; fi
+	wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/build-2.sh \
+    && chmod 775 ./build-2.sh && sh build-2.sh ; fi
 
 
 WORKDIR /var/theia/
 
 RUN if [ $workspace = "theia" ] ; then \
-	wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia/java/run.sh \
+	wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/run.sh \
     && chmod 775 ./run.sh ; fi
 
 COPY . /tmp/
