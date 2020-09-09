@@ -24,7 +24,6 @@ RUN if [ $workspace = "theia" ] ; then \
 	wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/build-2.sh \
     && chmod 775 ./build-2.sh && sh build-2.sh ; fi
 
-
 WORKDIR /var/theia/
 
 RUN if [ $workspace = "theia" ] ; then \
