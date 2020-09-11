@@ -15,7 +15,7 @@ RUN sh pre-build-2.sh
 # Install Workspace for Java
 
 RUN if [ $workspace = "theia" ] ; then \
-	wget -O ./pre-build.sh https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia/pre-build.sh \
+	wget -O ./pre-build.sh https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/pre-build.sh \
     && chmod 775 ./pre-build.sh && sh pre-build.sh ; fi
 
 WORKDIR /var/
