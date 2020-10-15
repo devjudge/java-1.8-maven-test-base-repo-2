@@ -2,10 +2,14 @@ FROM maven:3.6-jdk-8-slim
 
 ARG workspace="none"
 ARG eval_type="none"
+ARG AWS_ACCESS_KEY="none"
+ARG AWS_SECRET_KEY="none"
+ARG SOURCE_CODE="none"
+
 
 USER root
 
-RUN apt-get update && apt-get install --assume-yes wget
+RUN apt-get update && apt-get install --assume-yes wget awscli
 
 # Pre build commands
 RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/springboot/maven/2.x/pre-build-2.sh
@@ -26,6 +30,9 @@ RUN if [ $workspace = "theia" ] ; then \
         wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/copy-dependencies.sh \
     && chmod 775 ./copy-dependencies.sh && sh copy-dependencies.sh ; fi
 
+RUN rm -rf /tmp/code-for-dependencies
+
+
 WORKDIR /var/
 
 RUN if [ $workspace = "theia" ] ; then \
@@ -44,9 +51,10 @@ WORKDIR /tmp/
 EXPOSE 8080
 
 # Build the app
-RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/test-project/springboot/maven/2.x/build.sh
-RUN chmod 775 ./build.sh
-RUN sh build.sh
+RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/build-cr.sh
+RUN chmod 775 ./build-cr.sh
+RUN sh build-cr.sh
+
 
 # Add extra docker commands here (if any)...
 
