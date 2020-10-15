@@ -18,6 +18,14 @@ RUN if [ $workspace = "theia" ] ; then \
 	wget -O ./pre-build.sh https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/pre-build.sh \
     && chmod 775 ./pre-build.sh && sh pre-build.sh ; fi
 
+RUN mkdir -p /tmp/code-for-dependencies
+COPY . /tmp/code-for-dependencies
+WORKDIR /tmp/code-for-dependencies
+
+RUN if [ $workspace = "theia" ] ; then \
+        wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/theia-crossover/copy-dependencies.sh \
+    && chmod 775 ./copy-dependencies.sh && sh copy-dependencies.sh ; fi
+
 WORKDIR /var/
 
 RUN if [ $workspace = "theia" ] ; then \
